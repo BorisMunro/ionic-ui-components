@@ -2,8 +2,10 @@ import { IonActionSheet, IonButton, IonContent, IonHeader, IonIcon, IonPage, Ion
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import { image } from 'ionicons/icons';
+import { useState } from 'react';
 
 const Tab1: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <IonPage>
       <IonHeader>
@@ -12,12 +14,14 @@ const Tab1: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonButton id='open-action-sheet'>
+        <IonButton
+          onClick={() => {setIsOpen(!isOpen)}}
+        >
           <IonIcon icon={image} />
           Open
         </IonButton>
         <IonActionSheet 
-          trigger='open-action-sheet'
+          isOpen={isOpen}
           header='Actions'
           buttons={
             [
